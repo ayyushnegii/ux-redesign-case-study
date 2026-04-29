@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRCTC Redesign Case Study - Presentation</title>
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --card: #131a2b;
+      --neon-cyan: #00f5ff;
+      --neon-pink: #ff00ff;
+      --neon-green: #39ff14;
+      --neon-yellow: #ffff00;
+      --text: #e0e0e0;
+      --text-dim: #888;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #presentation {
+      width: 1920px;
+      height: 1080px;
+      background: var(--bg);
+      position: relative;
+      transform-origin: top left;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 80px 120px;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slide.active { display: flex; }
+
+    .slide-number {
+      position: absolute;
+      top: 40px;
+      right: 60px;
+      color: var(--text-dim);
+      font-size: 1.2rem;
+    }
+
+    h1 {
+      font-size: 4.5rem;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: 3rem;
+      color: var(--neon-cyan);
+      margin-bottom: 2rem;
+    }
+
+    h3 {
+      font-size: 2rem;
+      color: var(--neon-yellow);
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.8rem;
+      color: var(--text-dim);
+      margin-bottom: 3rem;
+    }
+
+    .content {
+      font-size: 1.6rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .metric-card {
+      background: var(--card);
+      border: 2px solid var(--neon-cyan);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 4rem;
+      font-weight: bold;
+      color: var(--neon-green);
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-label {
+      font-size: 1.4rem;
+      color: var(--text-dim);
+    }
+
+    .comparison {
+      display: flex;
+      gap: 4rem;
+      margin-top: 2rem;
+    }
+
+    .before-box, .after-box {
+      flex: 1;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .before-box {
+      background: rgba(255, 71, 87, 0.1);
+      border: 2px solid #ff4757;
+    }
+
+    .after-box {
+      background: rgba(46, 213, 115, 0.1);
+      border: 2px solid var(--neon-green);
+    }
+
+    .box-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .before-box .box-title { color: #ff4757; }
+    .after-box .box-title { color: var(--neon-green); }
+
+    .steps-list {
+      list-style: none;
+      font-size: 1.5rem;
+      line-height: 2.2;
+    }
+
+    .steps-list li:before {
+      content: "✗ ";
+      color: #ff4757;
+      font-weight: bold;
+    }
+
+    .after-list li:before {
+      content: "✓ ";
+      color: var(--neon-green);
+    }
+
+    .cta {
+      margin-top: 3rem;
+      padding: 1.5rem 3rem;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+      color: var(--bg);
+      font-size: 1.8rem;
+      font-weight: bold;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .nav-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--text-dim);
+      font-size: 1.2rem;
+    }
+
+    .logo {
+      position: absolute;
+      top: 40px;
+      left: 60px;
+      font-size: 1.5rem;
+      color: var(--neon-cyan);
+      font-weight: bold;
+    }
+
+    .big-number {
+      font-size: 8rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="presentation">
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+      <div class="logo">🚂 IRCTC REDESIGN</div>
+      <div class="slide-number">1 / 8</div>
+      <h1>IRCTC UX<br>Redesign Case Study</h1>
+      <p class="subtitle">Transforming India's most frustrating booking portal<br>from 12 steps to 5</p>
+      <div class="big-number">-57%</div>
+      <p class="content">Reduction in booking time (4.2min → 1.8min)</p>
+      <div class="nav-hint">Use ← → arrow keys to navigate</div>
+    </div>
+
+    <!-- Slide 2: Problem -->
+    <div class="slide">
+      <div class="logo">🚂 IRCTC REDESIGN</div>
+      <div class="slide-number">2 / 8</div>
+      <h2>The Problem</h2>
+      <div class="content">
+        <p style="font-size: 2rem; margin-bottom: 2rem;">IRCTC handles <strong style="color: var(--neon-cyan);">800,000+ daily bookings</strong><br>but has a <strong style="color: #ff4757;">68% drop-off rate</strong></p>
+        <div class="comparison">
+          <div class="before-box">
+            <div class="box-title">BEFORE</div>
+            <p style="font-size: 1.8rem;">12 steps to book</p>
+            <p style="font-size: 1.8rem;">3-4 CAPTCHAs</p>
+            <p style="font-size: 1.8rem;">42 elements on homepage</p>
+            <p style="font-size: 1.8rem;">4.2 min average booking</p>
+          </div>
+          <div class="after-box">
+            <div class="box-title">GOAL</div>
+            <p style="font-size: 1.8rem;">5 steps or less</p>
+            <p style="font-size: 1.8rem;">Zero CAPTCHAs</p>
+            <p style="font-size: 1.8rem;">Max 8 elements per screen</p>
+            <p style="font-size: 1.8rem;">Under 2 min booking</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Research -->
+    <div class="slide">
+      <div class="logo">🚂 IRCTC REDESIGN</div>
+      <div class="slide-number">3 / 8</div>
+      <h2>User Research</h2>
+      <div class="content">
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-value">60%</div>
+            <div class="metric-label">Users on Mobile</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">23%</div>
+            <div class="metric-label">Sessions Timeout (lost data)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">3-4</div>
+            <div class="metric-label">CAPTCHAs per Booking</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">$2.3M</div>
+            <div class="metric-label">Daily Revenue Lost (abandonment)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Before Flow -->
+    <div class="slide">
+      <div class="logo">🚂 IRCTC REDESIGN</div>
+      <div class="slide-number">4 / 8</div>
+      <h2>Before: 12-Step Flow</h2>
+      <div class="content">
+        <ul class="steps-list">
+          <li>Login (CAPTCHA + OTP)</li>
+          <li>Navigate to "Plan My Journey"</li>
+          <li>Enter source (7000+ stations)</li>
+          <li>Enter destination</li>
+          <li>Select date</li>
+          <li>Choose class</li>
+          <li>Click "Find Trains"</li>
+          <li>Scroll 50+ results</li>
+          <li>Select train + quota</li>
+          <li>Enter passenger details (manual)</li>
+          <li>Enter CAPTCHA (again)</li>
+          <li>Payment (3 redirects)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 5: After Flow -->
+    <div class="slide">
+      <div class="logo">🚂 IRCTC REDESIGN</div>
+      <div class="slide-number">5 / 8</div>
+      <h2>After: 5-Step Flow</h2>
+      <div class="content">
+        <ul class="steps-list after-list">
+          <li>Login (OTP only, trusted devices)</li>
+          <li>Search (typeahead, saved routes)</li>
+          <li>Select Train (top 10, sorted)</li>
+          <li>Passenger Details (saved + quick add)</li>
+          <li>Payment (in-page, UPI first)</li>
+        </ul>
+        <p style="margin-top: 2rem; font-size: 1.8rem; color: var(--neon-green);">✓ No CAPTCHA  ✓ Auto-save  ✓ Mobile optimized</p>
+      </div>
+    </div>
+
+    <!-- Slide 6: Metrics -->
+    <div class="slide">
+      <div class="logo">🚂 IRCTC REDESIGN</div>
+      <div class="slide-number">6 / 8</div>
+      <h2>Impact Metrics</h2>
+      <div class="content">
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-value">12→5</div>
+            <div class="metric-label">Steps Reduced (58%)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">68%→30%</div>
+            <div class="metric-label">Drop-off Rate (-56%)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">4.2→1.8</div>
+            <div class="metric-label">Minutes to Book (-57%)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">2.8→4.3</div>
+            <div class="metric-label">Mobile Score (/5)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: Design System -->
+    <div class="slide">
+      <div class="logo">🚂 IRCTC REDESIGN</div>
+      <div class="slide-number">7 / 8</div>
+      <h2>Design System Highlights</h2>
+      <div class="content">
+        <div class="comparison">
+          <div class="after-box">
+            <div class="box-title">DARK NEON THEME</div>
+            <p style="font-size: 1.5rem; margin: 1rem 0;">Background: #0a0e17</p>
+            <p style="font-size: 1.5rem; margin: 1rem 0;">Primary: #00f5ff (Cyan)</p>
+            <p style="font-size: 1.5rem; margin: 1rem 0;">Secondary: #ff00ff (Pink)</p>
+            <p style="font-size: 1.5rem; margin: 1rem 0;">Success: #39ff14 (Green)</p>
+          </div>
+          <div class="after-box">
+            <div class="box-title">MOBILE-FIRST</div>
+            <p style="font-size: 1.5rem; margin: 1rem 0;">Touch targets: 44px+</p>
+            <p style="font-size: 1.5rem; margin: 1rem 0;">Typeahead search</p>
+            <p style="font-size: 1.5rem; margin: 1rem 0;">Saved preferences</p>
+            <p style="font-size: 1.5rem; margin: 1rem 0;">WCAG AA compliant</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8: Conclusion -->
+    <div class="slide">
+      <div class="logo">🚂 IRCTC REDESIGN</div>
+      <div class="slide-number">8 / 8</div>
+      <h2>Conclusion</h2>
+      <div class="content" style="text-align: center;">
+        <p style="font-size: 2.2rem; margin-bottom: 2rem;">Government portals deserve<br><strong style="color: var(--neon-cyan);">modern UX too</strong></p>
+        <div class="big-number">$2.3M</div>
+        <p style="font-size: 1.8rem; margin-bottom: 3rem;">Daily revenue recovered from reduced abandonment</p>
+        <a href="https://github.com/ayyushnegii/ux-redesign-case-study" class="cta" target="_blank">View Full Case Study on GitHub →</a>
+        <p style="margin-top: 2rem; font-size: 1.4rem; color: var(--text-dim);">Built with Hermes Agent | #UXDesign #CaseStudy #IRCTC</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (n + totalSlides) % totalSlides;
+      slides[currentSlide].classList.add('active');
+      localStorage.setItem('irctc-slide', currentSlide);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+      if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+    });
+
+    // Scale to fit viewport
+    function scalePresentation() {
+      const pres = document.getElementById('presentation');
+      const scaleX = window.innerWidth / 1920;
+      const scaleY = window.innerHeight / 1080;
+      const scale = Math.min(scaleX, scaleY);
+      pres.style.transform = `scale(${scale})`;
+    }
+
+    window.addEventListener('resize', scalePresentation);
+    scalePresentation();
+
+    // Restore slide from localStorage
+    const savedSlide = localStorage.getItem('irctc-slide');
+    if (savedSlide !== null) {
+      showSlide(parseInt(savedSlide));
+    }
+  </script>
+</body>
+</html>

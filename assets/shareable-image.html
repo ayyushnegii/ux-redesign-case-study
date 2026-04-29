@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRCTC Before/After Comparison - Shareable Image</title>
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --card-bg: #131a2b;
+      --neon-cyan: #00f5ff;
+      --neon-pink: #ff00ff;
+      --neon-green: #39ff14;
+      --before-color: #ff4757;
+      --after-color: #2ed573;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .shareable-card {
+      width: 1200px;
+      background: linear-gradient(135deg, #0a0e17 0%, #131a2b 100%);
+      border: 3px solid var(--neon-cyan);
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 0 60px rgba(0, 245, 255, 0.3);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 1.3rem;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .before-column, .after-column {
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .before-column {
+      background: rgba(255, 71, 87, 0.1);
+      border: 2px solid var(--before-color);
+    }
+
+    .after-column {
+      background: rgba(46, 213, 115, 0.1);
+      border: 2px solid var(--after-color);
+    }
+
+    .column-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .before-column .column-title { color: var(--before-color); }
+    .after-column .column-title { color: var(--after-color); }
+
+    .metric {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .before-column .metric-value { color: var(--before-color); }
+    .after-column .metric-value { color: var(--after-color); }
+
+    .steps-list {
+      list-style: none;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .before-column .steps-list li:before {
+      content: "✗ ";
+      color: var(--before-color);
+      font-weight: bold;
+    }
+
+    .after-column .steps-list li:before {
+      content: "✓ ";
+      color: var(--after-color);
+      font-weight: bold;
+    }
+
+    .impact-strip {
+      display: flex;
+      justify-content: space-around;
+      background: rgba(0, 245, 255, 0.05);
+      border: 1px solid var(--neon-cyan);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .impact-item {
+      text-align: center;
+    }
+
+    .impact-value {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--neon-green);
+    }
+
+    .impact-label {
+      font-size: 1rem;
+      color: #888;
+      margin-top: 0.25rem;
+    }
+
+    .footer {
+      text-align: center;
+      color: #888;
+      font-size: 1.1rem;
+    }
+
+    .footer a {
+      color: var(--neon-cyan);
+      text-decoration: none;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+      color: var(--bg);
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="shareable-card">
+    <div class="header">
+      <h1>⚡ IRCTC UX Redesign</h1>
+      <p class="subtitle">Transforming India's Most Frustrating Booking Portal</p>
+    </div>
+
+    <div class="comparison-grid">
+      <!-- BEFORE COLUMN -->
+      <div class="before-column">
+        <div class="column-title">❌ BEFORE</div>
+        
+        <div class="metric">
+          <div class="metric-label">Booking Steps</div>
+          <div class="metric-value">12 STEPS</div>
+        </div>
+        
+        <div class="metric">
+          <div class="metric-label">Time to Book</div>
+          <div class="metric-value">4.2 MINUTES</div>
+        </div>
+        
+        <div class="metric">
+          <div class="metric-label">Drop-off Rate</div>
+          <div class="metric-value">68%</div>
+        </div>
+        
+        <div class="metric">
+          <div class="metric-label">CAPTCHA Count</div>
+          <div class="metric-value">3-4 PER BOOKING</div>
+        </div>
+        
+        <ul class="steps-list">
+          <li>Login (CAPTCHA + OTP)</li>
+          <li>Navigate menu (confusing)</li>
+          <li>7000+ station dropdown</li>
+          <li>Scroll 50+ trains</li>
+          <li>Enter CAPTCHA again</li>
+          <li>3 payment redirects</li>
+        </ul>
+      </div>
+
+      <!-- AFTER COLUMN -->
+      <div class="after-column">
+        <div class="column-title">✅ AFTER</div>
+        
+        <div class="metric">
+          <div class="metric-label">Booking Steps</div>
+          <div class="metric-value">5 STEPS</div>
+        </div>
+        
+        <div class="metric">
+          <div class="metric-label">Time to Book</div>
+          <div class="metric-value">1.8 MINUTES</div>
+        </div>
+        
+        <div class="metric">
+          <div class="metric-label">Drop-off Rate</div>
+          <div class="metric-value">30%</div>
+        </div>
+        
+        <div class="metric">
+          <div class="metric-label">CAPTCHA Count</div>
+          <div class="metric-value">0 (BOT DETECTION)</div>
+        </div>
+        
+        <ul class="steps-list">
+          <li>Login (OTP only)</li>
+          <li>Search (typeahead)</li>
+          <li>Select train (top 10)</li>
+          <li>Passenger (saved)</li>
+          <li>Payment (in-page)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="impact-strip">
+      <div class="impact-item">
+        <div class="impact-value">-57%</div>
+        <div class="impact-label">Faster Booking</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-value">-56%</div>
+        <div class="impact-label">Less Drop-off</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-value">+54%</div>
+        <div class="impact-label">Mobile Score</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-value">$2.3M</div>
+        <div class="impact-label">Revenue Recovered</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Full Case Study: https://github.com/ayyushnegii/ux-redesign-case-study</p>
+      <p>Live Prototype: https://ayyushnegii.github.io/ux-redesign-case-study/prototype/</p>
+      <div class="badge">🚂 800K+ Daily Bookings Improved</div>
+    </div>
+  </div>
+</body>
+</html>

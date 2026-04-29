@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRCTC Redesigned - Professional Mobile UI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .phone-mockup {
+      width: 375px;
+      height: 812px;
+      background: #0a0e17;
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border: 8px solid #1a1a1a;
+    }
+    
+    .status-bar {
+      height: 44px;
+      background: #0a0e17;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      color: #e0e0e0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #00f5ff 0%, #ff00ff 100%);
+      color: #0a0e17;
+      padding: 16px 20px;
+      font-weight: bold;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .search-section {
+      padding: 16px;
+    }
+    
+    .search-card {
+      background: #131a2b;
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid #2a3a5c;
+      margin-bottom: 16px;
+    }
+    
+    .input-group {
+      margin-bottom: 16px;
+    }
+    
+    .input-group:last-child {
+      margin-bottom: 0;
+    }
+    
+    .input-group label {
+      display: block;
+      color: #00f5ff;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #2a3a5c;
+      border-radius: 10px;
+      color: #e0e0e0;
+      font-size: 16px;
+      font-family: inherit;
+    }
+    
+    .input-group input:focus,
+    .input-group select:focus {
+      outline: none;
+      border-color: #00f5ff;
+    }
+    
+    .quick-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .tag {
+      background: rgba(0,245,255,0.1);
+      border: 1px solid #00f5ff;
+      color: #00f5ff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    
+    .search-btn {
+      background: linear-gradient(135deg, #00f5ff 0%, #ff00ff 100%);
+      color: #0a0e17;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      width: calc(100% - 32px);
+      margin: 0 16px;
+      font-family: inherit;
+    }
+    
+    .features {
+      margin: 16px;
+      padding: 16px;
+      background: rgba(0,245,255,0.05);
+      border: 1px solid #00f5ff;
+      border-radius: 12px;
+    }
+    
+    .features p {
+      color: #e0e0e0;
+      font-size: 14px;
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .check { color: #39ff14; }
+    
+    .train-results {
+      margin: 16px;
+    }
+    
+    .train-card {
+      background: #131a2b;
+      border: 1px solid #2a3a5c;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    
+    .train-name {
+      color: #e0e0e0;
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    
+    .train-time {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    
+    .train-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .price {
+      color: #00f5ff;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    
+    .book-btn {
+      background: linear-gradient(135deg, #00f5ff, #ff00ff);
+      color: #0a0e17;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-mockup">
+    <div class="status-bar">
+      <span>9:41</span>
+      <span>🔋 100%</span>
+    </div>
+    
+    <div class="header">
+      🚂 IRCTC Redesigned
+    </div>
+    
+    <div class="search-section">
+      <div class="search-card">
+        <div class="input-group">
+          <label>FROM</label>
+          <input type="text" value="Delhi (DLI)" readonly>
+        </div>
+        
+        <div class="input-group">
+          <label>TO</label>
+          <input type="text" value="Mumbai (CST)" readonly>
+        </div>
+        
+        <div class="input-group">
+          <label>DATE</label>
+          <input type="date" value="2026-04-30" readonly>
+        </div>
+        
+        <div class="input-group">
+          <label>CLASS</label>
+          <select>
+            <option>Sleeper (SL)</option>
+          </select>
+        </div>
+        
+        <div class="quick-tags">
+          <span class="tag">📍 Recent: Delhi→Agra</span>
+          <span class="tag">⭐ Popular: Delhi→Mumbai</span>
+        </div>
+      </div>
+    </div>
+    
+    <button class="search-btn">🔍 SEARCH TRAINS</button>
+    
+    <div class="features">
+      <p><span class="check">✓</span> No CAPTCHA needed</p>
+      <p><span class="check">✓</span> Saved preferences loaded</p>
+      <p><span class="check">✓</span> Mobile optimized</p>
+      <p><span class="check">✓</span> 5-step booking</p>
+    </div>
+  </div>
+</body>
+</html>
